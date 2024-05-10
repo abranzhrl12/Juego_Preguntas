@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Juego de Preguntas de Programación</title>
-<style>
 
-</style>
 </head>
 <body>
 <div class="question">
@@ -47,19 +45,5 @@
 <button onclick="calcularResultado()">Obtener resultado</button>
 <div id="resultado"></div>
 
-<script>
-    function calcularResultado() {
-    var respuestasCorrectas = ['b', 'c', 'b', 'c', 'd'];
-    var puntaje = 0;
-    for (var i = 1; i <= 5; i++) {
-        var respuesta = document.querySelector('input[name="q' + i + '"]:checked');
-        if (respuesta && respuesta.value === respuestasCorrectas[i - 1]) {
-            puntaje++;
-        }
-    }
-    var resultadoDiv = document.getElementById('resultado');
-    resultadoDiv.innerHTML = 'Tu puntaje es: ' + puntaje + ' de 5';
-}
-</script>
 </body>
 </html>
