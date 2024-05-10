@@ -9,8 +9,6 @@ if (resultado) {
   resultado.addEventListener('click', () => {
     // Seleccionar todos los radios marcados con la clase "radios"
     const radios: HTMLInputElement[] = Array.prototype.slice.call(document.querySelectorAll('.radios:checked'));
-
-
     // Verificar si se han seleccionado todos los radios
     if (radios.length === 5) {
       let contador: number = 0;
