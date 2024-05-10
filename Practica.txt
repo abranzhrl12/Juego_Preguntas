@@ -1,0 +1,358 @@
+////Maiin----------------
+
+class MainActivity : AppCompatActivity() {
+    lateinit var name: EditText
+
+    lateinit var diaTrabajdos:EditText
+    lateinit var rbMaestro:RadioButton
+    lateinit var rbOperario:RadioButton
+    lateinit var rbPeon:RadioButton
+
+    lateinit var rbEstable:RadioButton
+    lateinit var rbContacto:RadioButton
+
+    lateinit var btnCalcular:Button;
+    lateinit var btnNuevo:Button
+
+    lateinit var resIngreso:EditText
+    lateinit var resBonif:EditText
+    lateinit var resTotal:EditText
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+
+        title = "text View Ediext"
+        name = findViewById(R.id.edtName)
+
+        diaTrabajdos = findViewById(R.id.edtDiasTrabajados)
+        rbMaestro = findViewById(R.id.rbMaestro)
+        rbOperario = findViewById(R.id.rbOperario)
+        rbPeon = findViewById(R.id.rbPeon)
+
+        rbEstable = findViewById(R.id.rbEstable)
+        rbContacto = findViewById(R.id.rbContratado)
+
+        btnCalcular = findViewById(R.id.btnCalcular)
+        btnNuevo = findViewById(R.id.btnNuevo)
+
+        resTotal = findViewById(R.id.edtResTotal)
+        resBonif = findViewById(R.id.edtresBonificacion)
+        resIngreso = findViewById(R.id.edtResIngresos)
+
+        btnCalcular.setOnClickListener ({
+
+            var diasT = diaTrabajdos.text.toString().toFloat()
+
+            var Total = 0f
+            var ingresos = 0f
+            var bonif = 0f
+
+            when(true){
+                rbMaestro.isChecked -> ingresos = diasT * 150f
+                rbOperario.isChecked -> ingresos = diasT * 95f
+                rbPeon.isChecked -> ingresos = diasT * 75f
+                else -> Toast.makeText(applicationContext,"Elija Una Categoria",Toast.LENGTH_SHORT).show()
+
+            }
+
+            if (rbEstable.isChecked){
+                bonif = ingresos * 0.20f
+
+            } else if (rbContacto.isChecked){
+                bonif = ingresos * 0.10f
+            } else {
+                Toast.makeText(applicationContext,"Elija una Condicion",Toast.LENGTH_SHORT).show()
+            }
+
+            Total = ingresos + bonif
+
+            resIngreso.setText(ingresos.toString())
+            resBonif.setText(bonif.toString())
+            resTotal.setText(Total.toString())
+
+        })
+
+        btnNuevo.setOnClickListener({
+
+            resTotal.setText("")
+            resBonif.setText("")
+            resIngreso.setText("")
+            diaTrabajdos.setText("")
+            name.setText("")
+            name.requestFocus()
+
+            rbMaestro.isChecked = false
+            rbOperario.isChecked  = false
+            rbPeon.isChecked = false
+
+            rbEstable.isChecked = false
+            rbContacto.isChecked= false
+
+
+
+        })
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+    }
+}
+
+
+//XML-------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/edtDiasTrabajados"
+        android:layout_width="207dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Ingrese Los Datos"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+    <EditText
+        android:id="@+id/edtResIngresos"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Calculando..."
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.837" />
+
+    <EditText
+        android:id="@+id/edtResTotal"
+        android:layout_width="205dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:hint="Calculando..."
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/edtresBonificacion"
+        app:layout_constraintTop_toBottomOf="@+id/edtresBonificacion" />
+
+    <EditText
+        android:id="@+id/edtresBonificacion"
+        android:layout_width="206dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Calculando..."
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/edtResIngresos"
+        app:layout_constraintTop_toBottomOf="@+id/edtResIngresos" />
+
+    <TextView
+        android:id="@+id/textView332"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellidos y Nombres"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dias trabajados"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159" />
+
+    <TextView
+        android:id="@+id/textVie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Categoria"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conduicion"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53" />
+
+    <TextView
+        android:id="@+id/In"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingresos"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.823" />
+
+    <TextView
+        android:id="@+id/textVi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bonificacion"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.887" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.962" />
+
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="367dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="Ingrese Los Datos"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView332" />
+
+    <RadioGroup
+        android:layout_width="146dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVie">
+
+        <RadioButton
+            android:id="@+id/rbMaestro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maestro" />
+
+        <RadioButton
+            android:id="@+id/rbOperario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Operario" />
+
+        <RadioButton
+            android:id="@+id/rbPeon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Peon" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView34">
+
+        <RadioButton
+            android:id="@+id/rbEstable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Estable" />
+
+        <RadioButton
+            android:id="@+id/rbContratado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contratado" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nuevo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.749" />
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calcular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.751" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
