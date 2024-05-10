@@ -1,0 +1,15 @@
+{
+  "name": "quizdepreguntas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "juego.ts",
+  "scripts": {
+    "build": "tsc juego.ts --outFile juego_compilado.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.4.5"
+  }
+}

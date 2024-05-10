@@ -1,41 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Juego de Preguntas de Programación</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="juego_compilado.js" defer></script>
 </head>
+
 <body>
-    <div class="contenedor">
-        <h1 class="contenedor__titulo">Juego de Preguntas Programación</h1>
-        <div>
-            <p>¿Qué es CSS?</p>
-            <input type="text" placeholder="Escribir Respuesta">
+
+    <div class=" ti">
+
+        <h1>
+            Juego de Preguntas de Programación
+        </h1>
+
+
+    </div>
+    <div class="question">
+        <h3>Pregunta 1: ¿Qué significa HTML?</h3>
+        <div class="cj">
+
+            <label for=""><input type="radio" name="q1" value="a" class="radios"> <span>a) Hyper Text Markup
+                    Language</span></label>
+
+            <label for=""><input type="radio" name="q1" value="b" class="radios"> <span>b) Hyperlinks and Text Markup
+                    Language</span></label>
+
+            <label for=""> <input type="radio" name="q1" value="c" class="radios"> <span>c) Home Tool Markup
+                    Language</span></label>
+
+            <label for=""> <input type="radio" name="q1" value="d" class="radios"> <span>d) Hyper Text Makeup
+                    Language</span></label>
         </div>
-        <div>
-            <p>¿Qué significa Js?</p>
-            <input type="text" placeholder="Escribir Respuesta">
-        </div>
-        <div>
-            <p>¿Que significan las siglas HTML ?</p>
-            <input type="text" placeholder="Escribir Respuesta">
-        </div>
-        <div>
-            <p>¿Que es Mejor Alianza y Universitario?</p>
-            <input type="text" placeholder="Escribir Respuesta">
-        </div>
-        <div>
-            <h3>Pregunta 3: ¿Qué es CSS?</h3>
-            <input type="radio" name="q3" value="a"> a) Creative Style Sheets<br>
-            <input type="radio" name="q3" value="b"> b) Cascading Style Sheets<br>
-            <input type="radio" name="q3" value="c"> c) Computer Style Sheets<br>
-            <input type="radio" name="q3" value="d"> d) Colorful Style Sheets<br>
-        <button>Comprobar Respuesta</button>
-        <button>Limpiar</button>
+
     </div>
 
-    <script>
-        
-    </script>
+
+    <div class="question">
+        <h3>Pregunta 2: ¿Qué lenguaje de programación se utiliza principalmente para el desarrollo web?</h3>
+
+        <div class="cj"> <label for=""> <input type="radio" name="q2" value="a" class="radios"><span> a)
+                    Java</span></label>
+            <label for=""><input type="radio" name="q2" value="b" class="radios"> <span> b) Python</span></label>
+            <label for=""><input type="radio" name="q2" value="c" class="radios"> <span> c) JavaScript</span></label>
+            <label for=""><input type="radio" name="q2" value="d" class="radios"><span> d) C++</span></label>
+        </div>
+    </div>
+
+
+    <div class="question">
+        <h3>Pregunta 3: ¿Qué es CSS?</h3>
+        <div class="cj"> <label for=""> <input type="radio" name="q3" value="a" class="radios"> <span>a) Creative Style
+                    Sheets</span></label>
+            <label for=""><input type="radio" name="q3" value="b" class="radios"> <span>b) Cascading Style
+                    Sheets</span></label>
+            <label for=""> <input type="radio" name="q3" value="c" class="radios"> <span>c) Computer Style
+                    Sheets</span></label>
+            <label for=""><input type="radio" name="q3" value="d" class="radios"> <span>d) Colorful Style
+                    Sheets</span></label>
+        </div>
+    </div>
+
+
+
+
+    <div class="question">
+        <h3>Pregunta 4: ¿Qué es un bucle en la programación?</h3>
+        <div class="cj"> <label for=""><input type="radio" name="q4" value="a" class="radios"> <span>a) Una instrucción
+                    que detiene el
+                    programa</span></label>
+            <label for=""><input type="radio" name="q4" value="b" class="radios"> <span>b) Un error en el
+                    código</span></label>
+            <label for=""><input type="radio" name="q4" value="c" class="radios"> <span>c) Una serie de instrucciones que
+                    se
+                    repiten hasta
+                    que se cumple unacondición</span></label>
+            <label for=""><input type="radio" name="q4" value="d" class="radios"> <span>d) Una etiqueta
+                    HTML</span></label>
+        </div>
+    </div>
+
+
+
+    <div class="question">
+        <h3>Pregunta 5: ¿Qué es JavaScript?</h3>
+        <div class="cj"> <label for=""><input type="radio" name="q5" value="a" class="radios"> <span>a) Un lenguaje de
+                    programación de
+                    backend</span></label>
+            <label for=""><input type="radio" name="q5" value="b" class="radios"> <span>b) Un lenguaje de programación de
+                    frontend</span></label>
+            <label for=""><input type="radio" name="q5" value="c" class="radios"> <span>c) Un lenguaje de
+                    marcado</span></label>
+            <label for=""><input type="radio" name="q5" value="d" class="radios"> <span>d) Un lenguaje de programación de
+                    scripting del
+                    lado del cliente</span></label>
+        </div>
+    </div>
+
+
+
+    <button id="calcular">Obtener resultado</button>
+
+    <div id="resultado"></div>
+
+
 </body>
 </html>
